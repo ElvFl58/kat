@@ -1,0 +1,30 @@
+---
+import Gallery from "../components/Gallery.jsx";
+import PoemaRomantico from "../components/PoemaRomantico";
+import "../components/PoemaRomantico.css";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/home/Hero.astro";
+import Recuerdos from "../components/Recuerdos.astro";
+import Poema from "../components/Poema.astro";
+import Message from "../components/home/Message.jsx";
+import Kat from "../components/Kat.astro";
+import Final from "../components/Final.jsx";
+import Love from "../components/Love.astro";
+import Heart from "../components/home/Heart.astro";
+import InfoSection from "../components/home/InfoSection.astro";
+import RomanticSlider from "../components/home/RomanticSlide.jsx";
+---
+
+<Layout title="Kat Love">
+  <Hero />
+  <InfoSection />
+  <Heart />
+  <Recuerdos />
+  <!-- <RomanticSlider client:load/> -->
+  <Message client:visible />
+  <!-- <Love /> -->
+  <PoemaRomantico client:visible />
+  <Kat />
+  <!-- <Gallery/ client:visible> -->
+  <Final client:visible />
+</Layout>
