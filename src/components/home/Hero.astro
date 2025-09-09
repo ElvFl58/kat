@@ -1,0 +1,100 @@
+---
+export const prerender = false; // 👈 asegura que NO se genere estático
+const song = "/videos/music.mp4";
+---
+
+<!-- 
+<video controls autoplay muted loop poster="" class="oli" id="miVideo">
+  <source src={song} type="video/mp4" />
+  Tu navegador no soporta el audio.
+</video>
+<style>
+  .oli {
+    width: 0.1px;
+    height: 0.1px;
+  }
+</style>
+<script type="text/javascript">
+  function videoPlay() {
+    const video = document.querySelector(".oli");
+    video.muted = false;
+    video.style.display = "none";
+  }
+  setInterval(videoPlay, 1000);
+</script> -->
+<div
+  class="min-h-28 w-full flex items-center justify-center px-4 relative overflow-hidden bg-gradient-to-br from-pink-500 via-rose-400 to-fuchsia-500"
+>
+  <div
+    class="flex flex-col md:flex-row items-center justify-center w-full max-w-5xl z-10 gap-8"
+  >
+    <!-- Columna izquierda -->
+    <div
+      class="flex-1 flex flex-col items-center justify-center gap-6 md:items-start text-5xl m-6"
+    >
+      <h1
+        id="typewriter"
+        class="text-9xl sm:text-5xl md:text-7xl font-bold text-white drop-shadow-[0_0_20px_rgba(255,192,203,0.9)] leading-tight whitespace-nowrap border-r-4 pr-2 min-h-[60px] sm:min-h-[80px]"
+      >
+      </h1>
+      <p
+        class="min-w-4 text-white/90 text-base sm:text-lg md:text-xl max-w-md text-center md:text-left drop-shadow-[0_0_15px_rgba(255,182,193,0.8)]"
+      >
+        Eres la razón de mi sonrisa, mi inspiración y mi mayor alegría. Te amo
+        más de lo que las palabras pueden expresar.
+      </p>
+    </div>
+
+    <!-- Columna derecha: imagen -->
+    <div class="flex-1 flex items-center justify-center">
+      <div
+        class="relative w-[280px] h-[280px] sm:w-[400px] sm:h-[380px] md:w-[500px] md:h-[480px]"
+      >
+        <!-- Imagen -->
+        <img
+          src="/img/gallery/25.jpg"
+          alt="Kat"
+          class="w-full h-full object-cover absolute inset-0 z-0 mask-radial-at-center mask-radial-from-50% mask-radial-to-75%"
+        />
+
+        <!-- Overlay degradado -->
+        <div
+          class="absolute inset-0 z-10 pointer-events-none"
+          style="background: radial-gradient(circle, rgba(244,114,182,0.25) 60%, rgba(244,114,182,0.00) 100%);"
+        >
+        </div>
+
+        <!-- Corazones -->
+        <span
+          class="absolute top-6 sm:top-12 left-6 sm:left-16 text-3xl sm:text-5xl animate-bounce z-20"
+          >💕</span
+        >
+        <span
+          class="absolute bottom-8 sm:bottom-14 right-10 sm:right-20 text-2xl sm:text-4xl animate-pulse z-20"
+          >💖</span
+        >
+        <span
+          class="absolute top-1/2 right-6 sm:right-10 text-xl sm:text-3xl animate-bounce z-20"
+          >💗</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  // Animación máquina de escribir
+  document.addEventListener("DOMContentLoaded", function () {
+    const el = document.getElementById("typewriter");
+    const texto = "Katy Brezzia ";
+    let i = 0;
+    function escribir() {
+      if (i <= texto.length) {
+        el.textContent = texto.slice(0, i);
+        i++;
+        setTimeout(escribir, 180);
+      }
+    }
+    escribir();
+  });
+</script>

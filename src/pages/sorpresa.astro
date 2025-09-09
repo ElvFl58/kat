@@ -1,0 +1,622 @@
+---
+import Layout from "../layouts/Layout.astro";
+const tortaImg = "/img/cumple/torta.png";
+---
+
+<Layout title="Feliz Cumpleaños">
+  <main>
+    <div id="customAlert" class="modal">
+      <div class="modal-content">
+        <p>🎂 ¡Apaga la vela, Kat! 🎉</p>
+        <button onclick="closeAlert()">Cerrar</button>
+      </div>
+    </div>
+    <div class="container">
+      <h1>¡Feliz Cumpleaños Katy Brezzia!</h1>
+      <p>Hoy celebramos un año más de tu increíble vida 🎉</p>
+
+      <div class="cake-container" id="cakeContainer">
+        <div class="candle"></div>
+        <div class="flame" id="flame"></div>
+        <img src={tortaImg} alt="Pastel de cumpleaños" class="cake" />
+      </div>
+
+      <div class="wish-message" id="wishMessage">¡Pide un deseo! ✨</div>
+
+      <div class="appreciation" id="appreciation">
+        <div class="heart-icon">❤️</div>
+        <h2>¡Kat, en tus 21 primaveras!</h2>
+        <p class="poem">
+          Hoy celebramos el milagro de ti,<br />
+          tu risa que florece, tu alma que brilla,<br />
+          como el sol que acaricia al alba,<br />
+          como el susurro que calma las tormentas.<br /><br />
+          Tu luz enciende colores en los días grises,<br />
+          y tu bondad abraza sin pedir nada.<br />
+          Eres ese tipo de magia<br />
+          que hace que el mundo sea más bello solo por existir.<br /><br />
+        </p>
+        <div class="hearts">
+          <!-- Generar corazones con JS -->
+        </div>
+        <div class="container2">
+          <h1>Para ti, mi amor ❤️</h1>
+          <div class="message"></div>
+        </div>
+        <div class="wish">
+          <p>✨ Que este nuevo ciclo te traiga:</p>
+          <ul>
+            <li>
+              Viajes que te lleven a descubrir el latido más puro de la vida
+            </li>
+            <li>Encuentros que sanen, que enseñen a cuidar y a ser cuidados</li>
+            <li>
+              Momentos que brillen, como si cada uno de ellos fuera un pequeño
+              milagro
+            </li>
+            <li>
+              Sonrisas que resuenen en los corazones, creando ecos de esperanza
+            </li>
+            <li>
+              Y sueños que florezcan, como promesas que el alma sabe cumplir
+            </li>
+            <li>
+              Y en cada paso, la certeza de que el propósito se revela en cada
+              ser que encuentras
+            </li>
+            <li>
+              En cada gesto, la magia de un amor silencioso que da sin pedir
+            </li>
+            <li>
+              En cada mirada, la comprensión de lo que realmente significa
+              cuidar y proteger
+            </li>
+            <li>
+              Y en cada latido, el susurro de un compromiso que se convierte en
+              camino
+            </li>
+          </ul>
+        </div>
+
+        <p class="closing">
+          Eres un regalo del universo, Kat.<br />
+          Y hoy, en tu día, el mundo entero celebra contigo.<br /><br />
+          <span class="signature">Con todo mi cariño I Love You Katy</span>
+        </p>
+
+        <button
+          id="myBtn"
+          onclick="modalDisplay()"
+          style="position: absolute; bottom: 2px; z-index:20; padding: 10px 20px; background-color: #d81b60; color: white; border: none; border-radius: 5px; cursor: pointer;"
+          >Ver Mensaje</button
+        >
+      </div>
+    </div>
+  </main>
+
+  <style>
+    main {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      background-color: #ffebf3;
+      color: #d23369;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .cake-container {
+      position: relative;
+      margin: 30px auto;
+      width: 300px;
+      height: 300px;
+      cursor: pointer;
+    }
+
+    .cake {
+      width: 100%;
+      height: auto;
+    }
+
+    .candle {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 80px;
+      background: linear-gradient(to bottom, #f9d5bb, #f9a825);
+      border-radius: 5px;
+      z-index: 2;
+    }
+
+    .flame {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 40px;
+      background: #ff9d00;
+      border-radius: 50% 50% 20% 20%;
+      box-shadow:
+        0 0 10px #ff9d00,
+        0 0 20px #ff5e00,
+        0 0 30px #ff2200,
+        0 0 40px #ff0066,
+        0 0 70px #ff0099;
+      animation:
+        flicker 0.3s infinite alternate,
+        chispas 0.5s infinite;
+      z-index: 3;
+      filter: blur(0.5px);
+    }
+
+    @keyframes chispas {
+      0%,
+      100% {
+        box-shadow:
+          0 0 10px #ff9d00,
+          0 0 20px #ff5e00,
+          0 0 30px #ff2200,
+          0 0 40px #ff0066,
+          0 0 70px #ff0099;
+      }
+
+      50% {
+        box-shadow:
+          0 0 15px #ff9d00,
+          0 0 25px #ff5e00,
+          0 0 40px #ff2200,
+          0 -5px 50px #ff0066,
+          0 -10px 80px #ff0099;
+      }
+    }
+
+    @keyframes flicker {
+      0%,
+      22%,
+      44%,
+      66%,
+      88%,
+      100% {
+        height: 40px;
+        transform: translateX(-50%) scaleY(1);
+      }
+
+      11%,
+      33%,
+      55%,
+      77%,
+      99% {
+        height: 38px;
+        transform: translateX(-50%) scaleY(1.1);
+      }
+
+      20%,
+      40%,
+      60%,
+      80% {
+        transform: translateX(-50%) scaleX(1.1);
+      }
+    }
+
+    .smoke {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(
+        circle,
+        #f5f5f5 10%,
+        #cccccc 50%,
+        #999999 100%
+      );
+      border-radius: 50%;
+      opacity: 0;
+      z-index: 1;
+      filter: blur(4px);
+      box-shadow: 0 0 10px #ffffff;
+      transform-origin: center bottom;
+    }
+
+    @keyframes smokeRise {
+      0% {
+        transform: translate(-50%, 0) scale(0.3);
+        opacity: 0.9;
+      }
+
+      50% {
+        opacity: 0.6;
+        filter: blur(6px);
+      }
+
+      100% {
+        transform: translate(-50%, -150px) scale(1.8);
+        opacity: 0;
+        filter: blur(8px);
+      }
+    }
+
+    .wish-message {
+      display: none;
+      font-size: 2em;
+      margin: 20px 0;
+      color: #9c27b0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .appreciation {
+      display: none;
+      background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(214, 41, 119, 0.1);
+      border: 1px solid #ffd6e7;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .appreciation::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ff6b9d, #a18aff);
+    }
+
+    .heart-icon {
+      font-size: 3em;
+      animation: pulse 1.5s infinite;
+      margin-bottom: 15px;
+    }
+
+    .appreciation h2 {
+      color: #d23369;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .poem {
+      font-style: italic;
+      line-height: 1.8;
+      color: #5a5a5a;
+      margin-bottom: 25px;
+    }
+
+    .wish {
+      background: rgba(255, 214, 231, 0.3);
+      padding: 15px;
+      border-radius: 15px;
+      margin: 20px 0;
+    }
+
+    .wish p {
+      font-weight: bold;
+      color: #ff6b9d;
+      margin-bottom: 10px;
+    }
+
+    .wish ul {
+      list-style-type: none;
+      padding: 0;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .wish li {
+      margin: 8px 0;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .wish li::before {
+      content: "•";
+      color: #a18aff;
+      font-size: 1.5em;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+
+    .closing {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    .signature {
+      display: inline-block;
+      margin-top: 15px;
+      font-family: "Brush Script MT", cursive;
+      font-size: 1.3em;
+      color: #ff6b9d;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .message {
+      position: fixed;
+      font-size: 1.2em;
+      opacity: 0;
+      z-index: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsividad móvil */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .poem,
+      .closing {
+        font-size: 0.95em;
+      }
+
+      .wish-message {
+        font-size: 1.5em;
+      }
+
+      .cake-container {
+        width: 200px;
+        height: auto;
+      }
+
+      .appreciation {
+        padding: 20px;
+        margin: 20px auto;
+      }
+
+      .wish ul {
+        font-size: 0.9em;
+      }
+    }
+    /* vela apagar */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      font-size: 24px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      animation: popIn 0.4s ease-out;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff6f61;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    function showAlert() {
+      document.getElementById("customAlert").style.display = "flex";
+    }
+
+    function closeAlert() {
+      document.getElementById("customAlert").style.display = "none";
+    }
+
+    // Llamada automática
+    showAlert();
+
+    const cakeContainer = document.getElementById("cakeContainer");
+    const flame = document.getElementById("flame");
+    const wishMessage = document.getElementById("wishMessage");
+    const appreciation = document.getElementById("appreciation");
+    let candleLit = true;
+
+    const isSmallDevice = window.innerWidth <= 600;
+    const confettiCount = isSmallDevice ? 80 : 200;
+    const messageCount = isSmallDevice ? 20 : 50;
+
+    cakeContainer.addEventListener("click", function () {
+      if (candleLit) {
+        flame.style.display = "none";
+        wishMessage.style.display = "block";
+        candleLit = false;
+        createSmoke();
+
+        setTimeout(function () {
+          appreciation.style.display = "block";
+          createConfetti();
+          createFallingMessages();
+        }, 3000);
+      }
+    });
+
+    function createSmoke() {
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const smoke = document.createElement("div");
+          smoke.className = "smoke";
+          smoke.style.left = 50 + (Math.random() * 20 - 10) + "%";
+          document.body.appendChild(smoke);
+          setTimeout(() => {
+            smoke.style.animation =
+              "smokeRise " + (Math.random() * 2 + 1) + "s ease-out forwards";
+          }, 10);
+          setTimeout(() => {
+            smoke.remove();
+          }, 3000);
+        }, i * 200);
+      }
+    }
+
+    function createConfetti() {
+      const colors = [
+        "#f44336",
+        "#e91e63",
+        "#9c27b0",
+        "#673ab7",
+        "#3f51b5",
+        "#2196f3",
+        "#03a9f4",
+        "#00bcd4",
+        "#009688",
+        "#4CAF50",
+        "#8BC34A",
+        "#CDDC39",
+        "#FFEB3B",
+        "#FFC107",
+        "#FF9800",
+        "#FF5722",
+      ];
+      for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.backgroundColor =
+          colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = "-10px";
+        confetti.style.opacity = "1";
+        document.body.appendChild(confetti);
+
+        const animationDuration = Math.random() * 3 + 2;
+        const animationDelay = Math.random() * 5;
+
+        confetti.style.transition = `top ${animationDuration}s linear ${animationDelay}s, transform ${animationDuration}s linear ${animationDelay}s`;
+
+        setTimeout(() => {
+          confetti.style.top = "100vh";
+          confetti.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 200 - 100}px)`;
+        }, 10);
+
+        setTimeout(
+          () => {
+            confetti.remove();
+          },
+          (animationDuration + animationDelay) * 1000
+        );
+      }
+    }
+
+    function createFallingMessages() {
+      const messages = [
+        "¡21 años!",
+        "Felicidades",
+        "🎂",
+        "🎉",
+        "🥳",
+        "Eres increíble",
+        "Te quiero",
+        "¡Woohoo!",
+        "✨",
+        "Brillante como tú",
+        "¡A celebrar!",
+        "🥂",
+        "💖",
+      ];
+      for (let i = 0; i < messageCount; i++) {
+        const message = document.createElement("div");
+        message.className = "message";
+        message.textContent =
+          messages[Math.floor(Math.random() * messages.length)];
+        message.style.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        message.style.left = Math.random() * 100 + "vw";
+        message.style.top = "-30px";
+        message.style.opacity = "1";
+        message.style.fontSize = Math.random() * 20 + 15 + "px";
+
+        document.body.appendChild(message);
+
+        const animationDuration = Math.random() * 5 + 3;
+        const animationDelay = Math.random() * 3;
+
+        message.style.transition = `top ${animationDuration}s linear ${animationDelay}s, transform ${animationDuration}s linear ${animationDelay}s`;
+
+        setTimeout(() => {
+          message.style.top = "100vh";
+          message.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 200 - 100}px)`;
+        }, 10);
+
+        setTimeout(
+          () => {
+            message.remove();
+          },
+          (animationDuration + animationDelay) * 1000
+        );
+      }
+    }
+
+    // Función para mostrar el modal y el mensaje
+    function modalDisplay() {
+      window.location.href = "love.html";
+    }
+  </script>
+</Layout>

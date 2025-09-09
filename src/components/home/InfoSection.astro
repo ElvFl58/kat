@@ -1,0 +1,55 @@
+---
+import Card from "./Card.astro";
+const skill = [
+  {
+    title: "Medicina Veterinaria",
+    description:
+      "Apasionada por la salud y el bienestar animal, en constante formación académica y práctica para convertirse en profesional de la medicina veterinaria. Comprometida con el cuidado responsable y la ciencia que transforma vidas.",
+    img: "/img/kat/kat.jpg",
+  },
+  {
+    title: "Habilidades",
+    description:
+      "Comunicación efectiva, empatía, trabajo en equipo, resolución de problemas, adaptabilidad, pensamiento crítico, gestión del tiempo, liderazgo y habilidades técnicas específicas del campo veterinario.",
+    img: "/img/kat/kat.jpg",
+  },
+  {
+    title: "Intereses",
+    description:
+      "Medicina veterinaria, bienestar animal, conservación de la vida silvestre, educación comunitaria sobre el cuidado de las mascotas, investigación científica en salud animal y participación en programas de rescate y rehabilitación de animales.",
+    img: "/img/kat/kat.jpg",
+  },
+];
+---
+
+<h2>Mis Skill</h2>
+<section class="section-info">
+  {skill.map((item) => (
+    <Card img={item.img} title={item.title} description={item.description} />
+  ))}
+</section>
+
+<style>
+  h2 {
+    font-size: 40px;
+    text-align: center;
+    font-style: oblique;
+    color: #fff;
+    text-shadow: 0 10px 10px #b8034e;
+  }
+  .section-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 4px;
+  }
+  @media (max-width: 768px) {
+    .section-info {
+      flex-direction: column;
+      margin: 20px 8px;
+      gap: 2px;
+    }
+  }
+</style>

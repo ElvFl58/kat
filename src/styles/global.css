@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "tailwindcss/preflight";
+
+/* Fuente romántica global */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+::root{
+  color-scheme: dark light;
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+  /* font-family: 'Dancing Script', cursive, sans-serif; */
+}
