@@ -14,7 +14,7 @@ const fotos = [
   { src: "/img/gallery/15.jpg", alt: "Kat" },
   { src: "/img/gallery/14.jpg", alt: "Kat" },
   { src: "/img/gallery/13.jpg", alt: "Kat" },
-  { src: "/img/gallery/12.jpg", alt: "Kat" },
+  { src: "/img/gallery/25.jpg", alt: "Kat" },
   { src: "/img/gallery/11.jpg", alt: "Kat" },
   { src: "/img/gallery/10.jpg", alt: "Kat" },
   { src: "/img/gallery/09.jpg", alt: "Kat" },
