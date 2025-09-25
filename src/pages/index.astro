@@ -1,0 +1,24 @@
+---
+import Hero from '../components/home/Hero.astro';
+import Layout from '../layouts/Layout.astro';
+import InfoSection from '../components/home/InfoSection.astro';
+import Heard from '../components/home/Heard.astro';
+import Recuerdos from '../components/home/Recuerdos.astro';
+import Message from '../components/home/Message.jsx';
+import PoemaRomantico from '../components/home/PoemaRomantico.jsx';
+import Kat from '../components/home/Kat.astro';
+import Final from '../components/home/Final.jsx';
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="Katy" >
+	<Hero/>
+	<InfoSection/>
+	<Heard/>
+	<Recuerdos/>
+	<Message client:visible />
+	<PoemaRomantico client:visible />
+	<Kat/>
+	<Final/>
+</Layout>

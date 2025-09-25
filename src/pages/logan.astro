@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Mascot from "../components/logan/Mascot.jsx";
+---
+
+<Layout title="Logan - Mi Mejor Amigo">
+  <main>
+    <Mascot client:load />
+  </main>
+  <style>
+    main {
+      margin: 10px;
+      padding: 20px;
+    }
+  </style>
+</Layout>

@@ -1,0 +1,500 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const birthday = new Date(new Date().getFullYear(), 7, 30); // 30 de agosto
+const now = new Date();
+let diff = birthday.getTime() - now.getTime();
+
+if (diff < 0) {
+  birthday.setFullYear(birthday.getFullYear() + 1);
+  diff = birthday.getTime() - now.getTime();
+}
+
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+const mins = Math.floor((diff / (1000 * 60)) % 60);
+const secs = Math.floor((diff / 1000) % 60);
+// Niveles de revelación
+
+function getReveal() {
+  switch (days) {
+    case 30: {
+      return "Falta 1 mes KATY";
+    }
+    case 28: {
+      return "Falta 4 semanas ";
+    }
+    case 21: {
+      return "Falta 3 semanas";
+    }
+    case 14: {
+      return "Falta 2 semanas";
+    }
+    case 7: {
+      return "Falta 1 semana";
+    }
+    case 5: {
+      return "5 dias para el gran dia";
+    }
+    case 4: {
+      return "Hya 4 dias";
+    }
+    case 3: {
+      return "3 dias mas ";
+    }
+    case 2: {
+      return "dos dias🎉🎉🎉";
+    }
+    case 1: {
+      return "Maña mañana es";
+    }
+
+    default: {
+      return "Proximamente";
+    }
+  }
+}
+---
+
+<Layout title="Cumple">
+  <!-- <p>
+    {days}
+    {hours}
+    {mins}
+    {secs}
+  </p>
+  {days < 1 && <p>Que rapido pasa el tiempo</p>} -->
+
+  <style>
+    @keyframes bgChange {
+      0% {
+        background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      }
+
+      50% {
+        background: linear-gradient(135deg, #ffd6e8, #ffe0f0);
+      }
+
+      100% {
+        background: linear-gradient(135deg, #ffe4ec, #ffc1cc);
+      }
+    }
+
+    .container {
+      z-index: 2;
+      position: relative;
+      padding: 20px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    h1 {
+      /* margin: 4px;
+      font-size: 30px;
+      color: #ff4f81;
+      margin-bottom: 30px; */
+      text-shadow: 0 0 15px rgba(255, 100, 150, 0.8);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff4f81;
+      }
+
+      to {
+        text-shadow:
+          0 0 30px #fff0f5,
+          0 0 40px #ff4f81;
+      }
+    }
+
+    @keyframes heartbeat {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      25% {
+        transform: scale(1.1);
+      }
+
+      50% {
+        transform: scale(0.95);
+      }
+
+      75% {
+        transform: scale(1.05);
+      }
+    }
+
+    .sorpresa {
+      font-size: 45px;
+      color: #fff;
+      text-shadow:
+        0 0 10px #ff4f81,
+        0 0 30px #fff;
+      display: none;
+      animation:
+        fadeIn 2s ease-in-out,
+        glow 3s infinite alternate;
+    }
+
+    .heart,
+    .floating-heart {
+      font-size: 30px;
+      position: absolute;
+      color: #ff4f81;
+      opacity: 0.8;
+      animation: heartFall 5s infinite ease-in-out;
+    }
+
+    @keyframes heartFall {
+      0% {
+        top: -10%;
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+
+      100% {
+        top: 110%;
+        opacity: 0;
+        transform: translateX(30px) scale(1.5);
+      }
+    }
+
+    .floating-heart {
+      animation: floatHearts 10s linear infinite;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: confettiFall 4s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .oli {
+      width: 0.1px;
+      height: 0.1px;
+      /* position: absolute;
+           z-index: -200; */
+    }
+  </style>
+
+  <style>
+    .cuenta-regresiva {
+      overflow: hidden;
+      font-family: "Dancing Script", cursive;
+      /* width:100vw; */
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    }
+    /* Cuenta regresiva */
+    .cuenta-regresiva {
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .cuenta-regresiva::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100%;
+      /*background: url("/img/kat/kat2.jpg");*/
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      /* animation: twinkle 5s infinite alternate; */
+    }
+
+    /* .globos {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+      }
+
+      .globo {
+          position: absolute;
+          width: 60px;
+          height: 80px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          opacity: 0.8;
+          filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+      } */
+
+    .contador {
+      font-size: clamp(2.5rem, 6vw, 6rem);
+      font-weight: bold;
+      margin: 2rem 0;
+      display: flex;
+      gap: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    .contador-label {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #aa00ee;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .numero {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 0.5rem 1.5rem;
+      min-width: 100px;
+      backdrop-filter: blur(8px);
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    /* @keyframes twinkle {
+            0% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0.7;
+            }
+        } */
+  </style>
+
+  <section class="cuenta-regresiva">
+    <div class="globos" id="globos-container"></div>
+    <div class="text-center text-7xl">
+      <h1 class="m-0 p-0 text-pink-500 font-extrabold">Cuenta regresiva</h1>
+      <span
+        class="m-0 p-0 text-3xl text-purple-800 font-extrabold animate-pulse"
+      >
+        {getReveal()}
+      </span>
+    </div>
+    <div
+      class="contador text-pink-500 grid grid-cols-4 justify-center items-center gap-4"
+    >
+      <div class="text-center">
+        <div class="numero" id="dias"></div>
+        <div class="contador-label">Días</div>
+      </div>
+      <div class="text-center">
+        <div class="numero text-center" id="horas"></div>
+        <div class="contador-label">Horas</div>
+      </div>
+      <div class="text-center">
+        <div class="numero" id="minutos"></div>
+        <div class="contador-label">Minutos</div>
+      </div>
+      <div class="text-center">
+        <div class="numero" id="segundos"></div>
+        <div class="contador-label">Segundos</div>
+      </div>
+    </div>
+
+    <!-- Corazones cayendo -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="left: 30%; animation-delay: 1s;">🤍🧃</div>
+    <div class="heart" style="left: 60%; animation-delay: 2s;">💖</div>
+    <div class="heart" style="left: 60%; animation-delay: 2s;">💫</div>
+
+    <!-- Corazones flotando horizontalmente -->
+    <div class="floating-heart" style="left: 15%; top: 90%;">🎉</div>
+    <div class="floating-heart" style="left: 15%; top: 90%;">🎉</div>
+    <div class="floating-heart" style="left: 15%; top: 90%;">🎉</div>
+    <div class="floating-heart" style="left: 50%; top: 95%;">✨</div>
+    <div class="floating-heart" style="left: 50%; top: 95%;">✨</div>
+    <div class="floating-heart" style="left: 75%; top: 85%;">🌟</div>
+    <div class="floating-heart" style="left: 75%; top: 85%;">🌟</div>
+
+    <!-- Confeti colorido -->
+    <div
+      class="confetti"
+      style="left: 5%; background: #ff4f81; animation-delay: 0s;"
+    >
+    </div>
+    <div
+      class="confetti"
+      style="left: 15%; background: #ff69b4; animation-delay: 1s;"
+    >
+    </div>
+    <div
+      class="confetti"
+      style="left: 25%; background: #f06292; animation-delay: 2s;"
+    >
+    </div>
+    <div
+      class="confetti"
+      style="left: 35%; background: #ec407a; animation-delay: 3s;"
+    >
+    </div>
+    <div
+      class="confetti"
+      style="left: 45%; background: #e91e63; animation-delay: 4s;"
+    >
+    </div>
+    <div class="container text-6xl">
+      <div class="sorpresa" id="sorpresa">¡Feliz Cumpleaños, Katy! 🎉❤️</div>
+    </div>
+
+    <video controls autoplay muted loop poster="" class="oli" id="miVideo">
+      <source src="img/ROI.mp4" type="video/mp4" />
+      <track src="captions.vtt" default kind="captions" srclang="es" />
+      Tu navegador no soporta el audio.
+    </video>
+  </section>
+  <style>
+    /* ===== Responsive ===== */
+    @media (max-width: 568px) {
+      .contador {
+        flex-direction: column;
+      }
+      .cuenta-regresiva {
+        height: 900px;
+      }
+      #title-contador {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+
+  <!--
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+  />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
+  ></script> -->
+  <script type="text/javascript">
+    //     window.addEventListener('load', () => {
+    //         crearGlobos();
+    //     })
+    //     function crearGlobos() {
+    //     const container = document.getElementById('globos-container');
+    //     const colores = ['#ff2d6b', '#ff8fab', '#ffd700', '#c77dff', '#ffffff'];
+
+    //     for (let i = 0; i < 20; i++) {
+    //         const globo = document.createElement('div');
+    //         globo.className = 'globo';
+
+    //         const size = Math.random() * 50 + 50;
+    //         const posX = Math.random() * 100;
+    //         const delay = Math.random() * 5;
+    //         const duration = Math.random() * 15 + 15;
+    //         const color = colores[Math.floor(Math.random() * colores.length)];
+
+    //         globo.style.width = `${size}px`;
+    //         globo.style.height = `${size * 1.3}px`;
+    //         globo.style.left = `${posX}%`;
+    //         globo.style.bottom = `-${size * 1.3}px`;
+    //         globo.style.backgroundImage = `radial-gradient(circle at 30% 30%, ${color}, ${color} 60%, ${color}00)`;
+    //         globo.style.filter = `brightness(${Math.random() * 0.5 + 0.7}) drop-shadow(0 0 5px ${color})`;
+
+    //         container.appendChild(globo);
+
+    //         // Animación del globo
+    //         gsap.to(globo, {
+    //             y: `-${window.innerHeight + size * 1.3}px`,
+    //             x: `${Math.random() * 100 - 50}px`,
+    //             duration: duration,
+    //             delay: delay,
+    //             ease: "none",
+    //             onComplete: () => {
+    //                 globo.style.bottom = `-${size * 1.3}px`;
+    //                 globo.style.left = `${Math.random() * 100}%`;
+    //                 gsap.to(globo, {
+    //                     y: `-${window.innerHeight + size * 1.3}px`,
+    //                     x: `${Math.random() * 100 - 50}px`,
+    //                     duration: duration,
+    //                     ease: "none",
+    //                     repeat: -1
+    //                 });
+    //             }
+    //         });
+    //     }
+    // }
+
+    function videoPlay() {
+      const video = document.querySelector(".oli");
+      video.muted = false;
+      video.style.display = "none";
+    }
+    setInterval(videoPlay, 1000);
+    // setTimeout(() => window.location.href = "happy.html", 2000);
+    var birthday = new Date("August 30, 2026 00:00:00").getTime();
+
+    var x = setInterval(function () {
+      var now = new Date().getTime();
+      var distance = birthday - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("dias").innerHTML = days;
+      document.getElementById("horas").innerHTML = hours;
+      document.getElementById("minutos").innerHTML = minutes;
+      document.getElementById("segundos").innerHTML = seconds;
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("sorpresa").style.display = "block";
+        document.body.style.background =
+          "linear-gradient(135deg, #ff6f61, #ffb6c1)";
+        var audio = new Audio("https://www.soundjay.com/button/beep-07.wav");
+        audio.play();
+        setTimeout(() => (window.location.href = "/sorpresa"), 2000);
+      }
+    }, 1000);
+    const video = document.getElementById("miVideo");
+    const volumenSlider = document.getElementById("volumen");
+  </script>
+</Layout>

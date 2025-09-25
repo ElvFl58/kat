@@ -1,0 +1,20 @@
+---
+import Gallery from "../components/gallery/Gallery.jsx";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Gallery">
+  <main>
+    <Gallery client:load />
+  </main>
+  <style>
+    main {
+      margin: 10px 17px;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</Layout>

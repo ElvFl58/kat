@@ -1,0 +1,69 @@
+---
+/* No necesitas importar nada, solo poner el video en /public/videos/ */
+---
+
+<section class="video-fondo">
+  <video autoplay muted loop playsinline class="video-bg">
+    <source src="/videos/02.mp4" type="video/mp4" />
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="contenido-romantico">
+    <h1>💖 Momentos Inolvidables 💖</h1>
+    <p>Contigo cada instante es un recuerdo eterno...</p>
+  </div>
+</section>
+
+<style>
+  .video-fondo {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* pantalla completa */
+    overflow: hidden;
+    background: black; /* color de las barras */
+  }
+
+  .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 🔹 muestra TODO el video, sin recorte */
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* capa para mejorar contraste */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0; /* detrás del contenido pero encima del video */
+  }
+
+  .contenido-romantico {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    padding: 0 1rem;
+    text-shadow: 0 0 10px rgba(255, 192, 203, 0.9);
+  }
+
+  .contenido-romantico h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 15px;
+  }
+
+  .contenido-romantico p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    max-width: 700px;
+    margin: auto;
+  }
+</style>

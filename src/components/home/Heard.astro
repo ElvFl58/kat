@@ -1,0 +1,196 @@
+<style>
+/*  @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+  */
+  main {
+    position: relative;
+    margin: 0;
+    /* background: linear-gradient(
+        to bottom,
+        #ffebee 0%,
+        #f8bbd0 50%,
+        #e91e63 100%
+      ); */
+
+    background-image: url("/img/kat/kat3.jpg");
+    background-clip: padding-box;
+    background-repeat: repeat-x;
+    background-size: contain;
+    opacity: 0.8;
+    background-attachment: fixed;
+    /* filter:  */
+    /* mix-blend-mode: da; */
+    /* background: linear-gradient(
+        to bottom,
+        #db0e8c,
+        #ff3388,
+        #ff32c1,
+        #e93663,
+        #e70c0c
+      ); */
+    color: #d81b60;
+    /* overflow: hidden; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 700px;
+    text-align: center;
+  }
+
+  h1 {
+    display: none;
+    /* El h1 está presente pero visualmente oculto */
+  }
+
+  .heart-animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .animated-heart {
+    font-size: 25vw;
+    /* Corazón gigante */
+    color: #f48fb1;
+    opacity: 0.7;
+    animation: pulseHeart 1.5s infinite alternate;
+  }
+
+  @keyframes pulseHeart {
+    0% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  .te-amo-sho {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Caveat", cursive;
+    font-size: 8vw;
+    color: #e91e63;
+    text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.8);
+    opacity: 0;
+    animation: appearTeAmoSho 6s infinite;
+  }
+
+  @keyframes appearTeAmoSho {
+    0%,
+    80% {
+      opacity: 0;
+    }
+
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .falling-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .falling-heart {
+    position: absolute;
+    font-size: 1.8em;
+    color: #f06292;
+    animation: fallingHearts 7s linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes fallingHearts {
+    0% {
+      top: 10%;
+      left: calc(random(5%, 95%));
+      transform: scale(0.7) rotate(45deg);
+      opacity: 0.6;
+    }
+
+    100% {
+      top: 110%;
+      left: calc(random(5%, 95%));
+      transform: scale(1.1) rotate(-45deg);
+      opacity: 0;
+    }
+  }
+
+  .footer-love {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    color: #dd1f3e;
+    text-shadow: 6px 0 0 rgb(14, 2, 20);
+    font-weight: bolder;
+    font-size: 3.5rem;
+    font-style: italic;
+  }
+  @media (max-width: 768px) {
+    .footer-love {
+      color: #fff;
+      font-weight: bolder;
+      font-size: 1.5rem;
+      bottom: 2px;
+    }
+    main {
+      height: 100px;
+      background-size: cover;
+      min-height: 350px;
+    }
+    .animated-heart {
+      font-size: 45vw;
+      /* Corazón gigante */
+      color: #f48fb1;
+      opacity: 0.7;
+      animation: pulseHeart 1.5s infinite alternate;
+    }
+    .te-amo-sho {
+      font-size: 3rem;
+      color: #d4c0c7;
+      z-index: 20;
+    }
+  }
+</style>
+
+<main>
+  <h1>Para Mi Amada Sho</h1>
+  <div class="heart-animation-container">
+    <div class="animated-heart">❤️</div>
+  </div>
+  <div class="te-amo-sho">Te Amo Kat</div>
+  <div class="falling-hearts-container" id="fallingHearts"></div>
+
+  <div class="footer-love">Un amor que late eternamente por ti. 💕</div>
+
+  <!-- <script type="text/javascript">
+      const fallingHeartsContainer = document.getElementById("fallingHearts");
+      const numHearts = 20;
+      for (let i = 0; i < numHearts; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("falling-heart");
+        heart.innerText = "💖";
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDelay = `${Math.random() * 6}s`;
+        fallingHeartsContainer.appendChild(heart);
+      }
+    </script> -->
+</main>

@@ -1,0 +1,66 @@
+---
+//https://educacionveterinaria.com/
+import Card from "./Card.astro";
+const skill = [
+  {
+    title: "Medicina Veterinaria",
+    description:
+      "La medicina veterinaria como vocación y camino: cuidar, sanar y proteger a quienes nos regalan su compañía incondicional. Un compromiso con la ciencia y el amor por cada latido animal.",
+    img: "/img/kat/kat_03.jpg",
+    link: "https://edutin.com/curso-de-veterinaria",
+  },
+  {
+    title: "Habilidades",
+    description:
+      "Empatía que conecta con cada mirada, comunicación que genera confianza y manos que transmiten cuidado. Trabajo en equipo, pensamiento crítico y técnicas veterinarias que se convierten en actos de amor y responsabilidad.",
+    img: "/img/kat/kat_03.jpg",
+    link: "https://alison.com/es/curso/diploma-en-medicina-veterinaria",
+  },
+  {
+    title: "Intereses",
+    description:
+      "Bienestar animal, medicina preventiva y cirugía que devuelve la esperanza. Fascinación por la conservación de la fauna, la investigación en salud animal y la educación que inspira un mundo más compasivo.",
+    img: "/img/kat/kat_03.jpg",
+    link: "https://vetcameducation.com/",
+  },
+];
+---
+
+<h2>Lo que me inspira</h2>
+<section class="section-info">
+  {
+    skill.map((item) => (
+      <Card
+        img={item.img}
+        title={item.title}
+        description={item.description}
+        link={item.link}
+      />
+    ))
+  }
+</section>
+
+<style>
+  h2 {
+    font-size: 40px;
+    text-align: center;
+    font-style: oblique;
+    color: #fff;
+    text-shadow: 0 10px 10px #b8034e;
+  }
+  .section-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 4px;
+  }
+  @media (max-width: 768px) {
+    .section-info {
+      flex-direction: column;
+      margin: 20px 8px;
+      gap: 2px;
+    }
+  }
+</style>

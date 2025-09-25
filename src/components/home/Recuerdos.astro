@@ -1,0 +1,259 @@
+<section class="section-amor">
+  <h1 class="titulo-neon">🌹 Recuerdos 🌹</h1>
+
+  <div class="mensaje">
+    Desde que llegaste a mi vida, todo cambió... Eres mi inspiración, mi
+    alegría, mi paz. <br />
+    Atte: .. 💕
+  </div>
+
+  <div class="slider-romantico">
+    <div class="slides">
+      <div class="slide active" style="--bg:url('/img/kat/03.jpg')">
+        <img src="/img/kat/03.jpg" alt="Momento 1" />
+      </div>
+      <div class="slide" style="--bg:url('/img/kat/kat.jpg')">
+        <img src="/img/kat/kat.jpg" alt="Momento 2" />
+      </div>
+      <div class="slide" style="--bg:url('/img/recuerdos/foto.jpg')">
+        <img src="/img/recuerdos/foto.jpg" alt="Momento 3" />
+      </div>
+      <div class="slide" style="--bg:url('/img/recuerdos/cachimbos.jpg')">
+        <img src="/img/recuerdos/cachimbos.jpg" alt="Momento 4" />
+      </div>
+      <div class="slide" style="--bg:url('/img/recuerdos/foto2.jpg')">
+        <img src="/img/recuerdos/foto2.jpg" alt="Momento 5" />
+      </div>
+      <div class="slide" style="--bg:url('/img/recuerdos/foto3.jpg')">
+        <img src="/img/recuerdos/foto3.jpg" alt="Momento 6" />
+      </div>
+    </div>
+
+    <!-- Controles -->
+    <button class="control prev">❮</button>
+    <button class="control next">❯</button>
+
+    <!-- Indicadores -->
+    <div class="indicators"></div>
+  </div>
+</section>
+
+<style>
+  /* Fondo romántico animado */
+  .section-amor {
+    padding: 40px 20px;
+    color: white;
+    text-align: center;
+    background: linear-gradient(-45deg, #aa00ff, #ff6fec, #d11749, #c03c7e);
+    background-size: 400% 400%;
+    animation: fondoAnim 15s ease infinite;
+    position: relative;
+  }
+  @keyframes fondoAnim {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Destellos románticos */
+  .section-amor::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px
+    );
+    background-size: 50px 50px;
+    animation: twinkle 6s infinite linear;
+  }
+  @keyframes twinkle {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Título neón */
+  .titulo-neon {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow:
+      0 0 10px #890ba8,
+      0 0 20px #ff6fec,
+      0 0 40px #ff6fec,
+      0 0 80px #ff6fec;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Mensaje */
+  .mensaje {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Slider */
+  .slider-romantico {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.4);
+  }
+
+  .slides {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg) center/cover no-repeat;
+    opacity: 0;
+    transform: scale(1.1);
+    transition:
+      opacity 1s ease,
+      transform 1.2s ease;
+  }
+
+  .slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+  }
+
+  /* Controles */
+  .control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.3s;
+  }
+  .control:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .control.prev {
+    left: 10px;
+  }
+  .control.next {
+    right: 10px;
+  }
+
+  /* Indicadores */
+  .indicators {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 3;
+  }
+  .indicators span {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition:
+      transform 0.3s,
+      background 0.3s;
+  }
+  .indicators span.active {
+    background: #ff6fec;
+    transform: scale(1.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .slides {
+      height: 50vh;
+    }
+    .titulo-neon {
+      font-size: 2em;
+    }
+    .mensaje {
+      font-size: 1em;
+    }
+  }
+</style>
+
+<script type="text/javascript">
+  let index = 0;
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  const indicatorsContainer = document.querySelector(".indicators");
+
+  // Crear indicadores dinámicos
+  slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      index = i;
+      showSlide(index);
+    });
+    indicatorsContainer.appendChild(dot);
+  });
+  const indicators = indicatorsContainer.querySelectorAll("span");
+
+  function showSlide(i) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    indicators.forEach((dot) => dot.classList.remove("active"));
+    slides[i].classList.add("active");
+    indicators[i].classList.add("active");
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  }
+
+  prevBtn.addEventListener("click", prevSlide);
+  nextBtn.addEventListener("click", nextSlide);
+
+  // Autoplay
+  setInterval(nextSlide, 5000);
+</script>

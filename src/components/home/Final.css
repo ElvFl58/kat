@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+#final {
+    max-width: 100% !important;
+    min-width: 100%;
+}
+
+.final-romantico {
+    position: relative;
+    height: 100vh;
+    background: radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.15) 0%,
+            transparent 70%),
+        linear-gradient(180deg, #ffe0ec, #ffb6c1, #ff7f9e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    animation: brilloFondo 6s infinite alternate;
+    transition: all 1s ease-in-out;
+}
+
+/* Congelado final */
+.final-romantico.congelado {
+    filter: sepia(0.15) contrast(1.1);
+    transform: scale(1.02);
+}
+
+.final-romantico.congelado .mensaje-final {
+    border: 15px solid white;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+/* Flash */
+.flash {
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.final-romantico.flash-activo .flash {
+    animation: flashEffect 0.6s ease-out;
+}
+
+@keyframes flashEffect {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Estrellas */
+.estrellas {
+    position: absolute;
+    inset: 0;
+    background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+    opacity: 0.3;
+    animation: parpadeoEstrellas 5s infinite alternate;
+}
+
+@keyframes parpadeoEstrellas {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+/* Polaroids */
+.polaroids {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.polaroid {
+    position: absolute;
+    width: 120px;
+    height: 150px;
+    background: white;
+    padding: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: caer 12s linear infinite;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 20px solid white;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(-200px) rotate(0deg);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(90vh) rotate(20deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+/* Pétalos */
+.petalos {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.petalo {
+    position: absolute;
+    animation: petalosCaen 10s linear infinite;
+}
+
+@keyframes petalosCaen {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Corazones */
+.corazones {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.corazon {
+    position: absolute;
+    animation: corazonesSuben 9s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes corazonesSuben {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Destellos */
+.destellos {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.destello {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: brillar 3s infinite alternate;
+}
+
+@keyframes brillar {
+    from {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Texto */
+.mensaje-final {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-family: "Great Vibes", cursive;
+    text-shadow: 0 0 15px rgba(255, 182, 193, 0.8),
+        0 0 30px rgba(255, 105, 180, 0.6);
+}
+
+.escritura {
+    font-size: 3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid rgba(255, 255, 255, 0.7);
+    animation: escribir 4s steps(20, end), cursor 0.8s infinite;
+}
+
+.escritura-lenta {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.6;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid rgba(255, 255, 255, 0.6);
+    animation: escribir 6s steps(50, end) 2s forwards, cursor 0.8s infinite;
+}
+
+@keyframes escribir {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes cursor {
+    from {
+        border-color: transparent;
+    }
+
+    to {
+        border-color: rgba(255, 255, 255, 0.7);
+    }
+}
