@@ -117,7 +117,7 @@ const PoemaRomantico = () => {
             <p key={i} className="poema-linea animate-linea">{linea}</p>
           ))}
         </div>
-        <div className="poema-firma animate-firma">Siempre tuyo, con una pasión infinita.</div>
+        <div className="poema-firma animate-firma">Siempre con una pasión infinita.</div>
         <footer className="poema-footer animate-footer">
           Mi amor por ti, Kat, es un fuego eterno que jamás se extinguirá. 🔥
         </footer>
