@@ -47,8 +47,8 @@ export default function Conexion() {
       <button className="cerrar" onClick={() => setVisible(false)}>
         ❌
       </button>
-      <p className="saludo">{greeting}</p>
-      <p className="frase">{fraseActual}</p>
+      <p className="saludo">{'Hola Katy'}</p>
+      <p className="frase">{fraseActua}</p>
       <div className="hearts"></div>
     </section>
   );
