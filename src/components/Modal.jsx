@@ -17,7 +17,7 @@ export default function Conexion() {
   } else {
     greeting = "🌙 Dulces noches, mi vida";
   }
-
+ let greeting = "Hola Katy";
   // Frases románticas cortas
   const frases = [
     "💖 Eres mi razón de sonreír.",
