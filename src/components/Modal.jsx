@@ -17,7 +17,7 @@ export default function Conexion() {
   } else {
     greeting = "🌙 Dulces noches, mi vida";
   }
- let greeting = "Hola Katy";
+
   // Frases románticas cortas
   const frases = [
     "💖 Eres mi razón de sonreír.",
@@ -47,7 +47,7 @@ export default function Conexion() {
       <button className="cerrar" onClick={() => setVisible(false)}>
         ❌
       </button>
-      <p className="saludo">Hola Katy</p>
+      <p className="saludo">{greeting}</p>
       <p className="frase">{fraseActua}</p>
       <div className="hearts"></div>
     </section>
