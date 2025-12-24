@@ -2,13 +2,16 @@
   <h1 class="titulo-neon">🌹 Recuerdos 🌹</h1>
 
   <div class="mensaje">
-    Desde que llegaste a mi vida, todo cambió... Eres mi inspiración, mi
+    Eres mi inspiración, mi
     alegría, mi paz. <br />
     Atte: .. 💕
   </div>
 
   <div class="slider-romantico">
     <div class="slides">
+      <div class="slide" style="--bg:url('/img/recuerdos/001.jpeg')">
+        <img src="/img/recuerdos/001.jpeg" alt="Momento 01" />
+      </div>
       <div class="slide active" style="--bg:url('/img/kat/03.jpg')">
         <img src="/img/kat/03.jpg" alt="Momento 1" />
       </div>
@@ -46,8 +49,9 @@
     text-align: center;
     background: linear-gradient(-45deg, #aa00ff, #ff6fec, #d11749, #c03c7e);
     background-size: 400% 400%;
-    animation: fondoAnim 15s ease infinite;
+    animation: fondoAnim 20s ease infinite;
     position: relative;
+    overflow: hidden;
   }
   @keyframes fondoAnim {
     0% {
@@ -68,42 +72,61 @@
     inset: 0;
     background: radial-gradient(
       circle,
-      rgba(255, 255, 255, 0.2) 1px,
+      rgba(255, 255, 255, 0.15) 1px,
       transparent 1px
     );
     background-size: 50px 50px;
-    animation: twinkle 6s infinite linear;
+    animation: twinkle 8s infinite linear;
   }
   @keyframes twinkle {
-    from {
+    0%,
+    100% {
       transform: translateY(0);
+      opacity: 0.9;
     }
-    to {
-      transform: translateY(-20px);
+    50% {
+      transform: translateY(-15px);
+      opacity: 1;
     }
   }
 
   /* Título neón */
   .titulo-neon {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 2.8em;
+    margin-bottom: 25px;
     text-shadow:
       0 0 10px #890ba8,
       0 0 20px #ff6fec,
       0 0 40px #ff6fec,
-      0 0 80px #ff6fec;
+      0 0 80px #ff6fec,
+      0 0 100px #ff6fec;
     position: relative;
     z-index: 2;
+    animation: glowTitle 2.5s infinite alternate;
+  }
+  @keyframes glowTitle {
+    from {
+      text-shadow:
+        0 0 10px #890ba8,
+        0 0 20px #ff6fec;
+    }
+    to {
+      text-shadow:
+        0 0 15px #ff6fec,
+        0 0 35px #ff6fec;
+    }
   }
 
   /* Mensaje */
   .mensaje {
-    font-size: 1.2em;
+    font-size: 1.3em;
     max-width: 700px;
-    margin: 0 auto 30px;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+    margin: 0 auto 35px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
     position: relative;
     z-index: 2;
+    animation: fadeIn 2s ease forwards;
   }
 
   /* Slider */
@@ -113,15 +136,13 @@
     margin: auto;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 0 40px rgba(255, 105, 180, 0.4);
+    box-shadow: 0 0 50px rgba(255, 105, 180, 0.4);
   }
-
   .slides {
     position: relative;
     width: 100%;
     height: 70vh;
   }
-
   .slide {
     position: absolute;
     inset: 0;
@@ -132,20 +153,20 @@
     opacity: 0;
     transform: scale(1.1);
     transition:
-      opacity 1s ease,
-      transform 1.2s ease;
+      opacity 1.2s ease,
+      transform 1.5s ease;
   }
-
   .slide img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
-    position: relative;
-    z-index: 1;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 0 35px rgba(255, 105, 180, 0.5);
+    transition: transform 8s ease;
   }
-
+  .slide.active img {
+    transform: scale(1.05);
+  }
   .slide.active {
     opacity: 1;
     transform: scale(1);
@@ -160,20 +181,23 @@
     background: rgba(255, 255, 255, 0.6);
     border: none;
     font-size: 2rem;
-    padding: 10px;
+    padding: 12px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 3;
-    transition: background 0.3s;
+    transition:
+      background 0.3s,
+      transform 0.3s;
   }
   .control:hover {
     background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
   }
   .control.prev {
-    left: 10px;
+    left: 12px;
   }
   .control.next {
-    right: 10px;
+    right: 12px;
   }
 
   /* Indicadores */
@@ -183,12 +207,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     z-index: 3;
   }
   .indicators span {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     cursor: pointer;
@@ -198,7 +222,19 @@
   }
   .indicators span.active {
     background: #ff6fec;
-    transform: scale(1.3);
+    transform: scale(1.4);
+  }
+
+  /* Animaciones */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Responsive */
@@ -207,53 +243,10 @@
       height: 50vh;
     }
     .titulo-neon {
-      font-size: 2em;
+      font-size: 2.2em;
     }
     .mensaje {
-      font-size: 1em;
+      font-size: 1.1em;
     }
   }
 </style>
-
-<script type="text/javascript">
-  let index = 0;
-  const slides = document.querySelectorAll(".slide");
-  const prevBtn = document.querySelector(".prev");
-  const nextBtn = document.querySelector(".next");
-  const indicatorsContainer = document.querySelector(".indicators");
-
-  // Crear indicadores dinámicos
-  slides.forEach((_, i) => {
-    const dot = document.createElement("span");
-    if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      index = i;
-      showSlide(index);
-    });
-    indicatorsContainer.appendChild(dot);
-  });
-  const indicators = indicatorsContainer.querySelectorAll("span");
-
-  function showSlide(i) {
-    slides.forEach((slide) => slide.classList.remove("active"));
-    indicators.forEach((dot) => dot.classList.remove("active"));
-    slides[i].classList.add("active");
-    indicators[i].classList.add("active");
-  }
-
-  function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-  }
-
-  function prevSlide() {
-    index = (index - 1 + slides.length) % slides.length;
-    showSlide(index);
-  }
-
-  prevBtn.addEventListener("click", prevSlide);
-  nextBtn.addEventListener("click", nextSlide);
-
-  // Autoplay
-  setInterval(nextSlide, 5000);
-</script>

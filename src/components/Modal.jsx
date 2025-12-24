@@ -11,11 +11,11 @@ export default function Conexion() {
   // Saludo romántico según la hora
   let greeting = "";
   if (currentHour < 12) {
-    greeting = "☀️ Buenos días,";
+    greeting = "☀️ Hola Katy";
   } else if (currentHour < 18) {
-    greeting = "🌹 Buenas tardes, corazón";
+    greeting = "🌹 Hola Brezzia";
   } else {
-    greeting = "🌙 Dulces noches, mi vida";
+    greeting = "🌙 Como estas espero que este bien ";
   }
 
   // Frases románticas cortas
@@ -48,7 +48,7 @@ export default function Conexion() {
         ❌
       </button>
       <p className="saludo">{greeting}</p>
-      <p className="frase">{fraseActua}</p>
+      <p className="frase">{fraseActual}</p>
       <div className="hearts"></div>
     </section>
   );

@@ -1,0 +1,124 @@
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<section class="relative w-full h-screen overflow-hidden">
+  <!-- Video de fondo -->
+  <video
+    autoplay
+    loop
+    muted
+    playsinline
+    class="absolute w-full h-full object-contain"
+  >
+    <source src="/videos/reels/001.mp4" type="video/mp4" />
+    Tu navegador no soporta videos.
+  </video>
+
+  <!-- Overlay degradado romántico -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50"
+  >
+  </div>
+
+  <!-- Bordes de corazones animados -->
+  <div class="absolute inset-0 pointer-events-none" id="corazonesBorde"></div>
+
+  <!-- Contenido encima -->
+  <div
+    class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
+  >
+    <h1
+      class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-[0_0_25px_rgba(255,182,193,0.8)] animate-glowTitle mb-4"
+    >
+      Sigue brillando
+    </h1>
+    <p
+      class="text-lg md:text-2xl text-white/90 max-w-3xl leading-relaxed animate-fadeIn"
+    >
+      Nunca te rindas, sigue adelante. No estás sola, yo siempre estaré aquí
+      para ti.
+    </p>
+  </div>
+</section>
+
+<style>
+  /* Animaciones */
+  @keyframes glowTitle {
+    from {
+      text-shadow:
+        0 0 10px #ff6fec,
+        0 0 20px #ffb6c1;
+    }
+    to {
+      text-shadow:
+        0 0 25px #ff6fec,
+        0 0 40px #ffb6c1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-glowTitle {
+    animation: glowTitle 2.5s infinite alternate;
+  }
+  .animate-fadeIn {
+    animation: fadeIn 2s ease forwards;
+  }
+
+  /* Corazones borde animados */
+  .corazonBorde {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    animation: mover 6s linear infinite;
+  }
+  @keyframes mover {
+    0% {
+      transform: translateY(0) scale(0.5) rotate(0deg);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20px) scale(1) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script type="text/javascript">
+  // Crear corazones flotando en el borde
+  const borde = document.getElementById("corazonesBorde");
+
+  function crearCorazonBorde() {
+    const heart = document.createElement("div");
+    heart.classList.add("corazonBorde");
+    heart.innerHTML = "❤️";
+    heart.style.top = Math.random() < 0.5 ? "0" : "calc(100% - 20px)"; // borde superior o inferior
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+    borde.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+
+  setInterval(crearCorazonBorde, 300);
+</script>
